@@ -7,6 +7,7 @@ django-reversion
 django-social-share
 django-sortedm2m
 django-impersonate
+django_select2
 -e git://github.com/DMOJ/dmoj-wpadmin.git#egg=dmoj-wpadmin
 lxml
 Pygments
@@ -24,3 +25,6 @@ requests
 django-fernet-fields
 pyotp
 qrcode[pil]
+websocket-client
+unicodecsv
+mysqlclient
