@@ -358,3 +358,5 @@ if 'newsletter' in settings.INSTALLED_APPS:
     urlpatterns.append(url(r'^newsletter/', include('newsletter.urls')))
 if 'impersonate' in settings.INSTALLED_APPS:
     urlpatterns.append(url(r'^impersonate/', include('impersonate.urls')))
+if 'rosetta' in settings.INSTALLED_APPS:
+    urlpatterns.append(url(r'^rosetta/', include('rosetta.urls')))

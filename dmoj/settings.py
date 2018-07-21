@@ -45,7 +45,7 @@ except ImportError:
     pass
 else:
     del wpadmin
-    INSTALLED_APPS += ('wpadmin',)
+    INSTALLED_APPS += ('wpadmin', 'rosetta')
 
     WPADMIN = {
         'admin': {
