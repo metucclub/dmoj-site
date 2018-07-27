@@ -51,7 +51,7 @@ register_patterns = [
         extra_context={'title': _('Login')},
         authentication_form=CustomAuthenticationForm,
     ), name='auth_login'),
-    url(r'^logout/$', user.UserLogoutView.as_view(), name='auth_logout'),
+    url(r'^logout/$', auth_views.LogoutView.as_view(), name='auth_logout'),
     url(r'^password/change/$', auth_views.PasswordChangeView.as_view(
         template_name='registration/password_change_form.html'
     ), name='password_change'),

@@ -4,7 +4,6 @@ from datetime import datetime
 from operator import itemgetter
 
 from django.conf import settings
-from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Permission
 from django.contrib.auth.views import redirect_to_login
@@ -295,12 +294,3 @@ def user_ranking_redirect(request):
     rank += Profile.objects.filter(performance_points__exact=user.performance_points, id__lt=user.id).count()
     page = rank // UserList.paginate_by
     return HttpResponseRedirect('%s%s#!%s' % (reverse('user_list'), '?page=%d' % (page + 1) if page else '', username))
-
-
-class UserLogoutView(TitleMixin, TemplateView):
-    template_name = 'registration/logout.html'
-    title = 'You have been successfully logged out.'
-
-    def post(self, request, *args, **kwargs):
-        auth_logout(request)
-        return HttpResponseRedirect(request.get_full_path())

@@ -184,6 +184,8 @@ SILENCED_SYSTEM_CHECKS = ['urls.W002', 'fields.W342']
 
 ROOT_URLCONF = 'dmoj.urls'
 LOGIN_REDIRECT_URL = '/user'
+LOGOUT_REDIRECT_URL = '/'
+
 WSGI_APPLICATION = 'dmoj.wsgi.application'
 
 TEMPLATES = [
@@ -316,7 +318,7 @@ EVENT_DAEMON_KEY = None
 # Whatever you do, this better be one of the entries in `LANGUAGES`.
 LANGUAGE_CODE = 'en'
 TIME_ZONE = 'UTC'
-DEFAULT_USER_TIME_ZONE = 'America/Toronto'
+DEFAULT_USER_TIME_ZONE = 'Europe/Istanbul'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
