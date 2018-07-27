@@ -37,7 +37,9 @@
                         <div class="detail">
                             <div class="header">
                                 {{ link_user(node.author) }}&nbsp;
-                                {{ relative_time(node.time, abs=_('commented on {time}'), rel=_('commented {time}')) }}
+                                {% with abs=_('commented on {time}'), rel=_('commented {time}') %}
+                                    {{ relative_time(post.publish_on, abs, rel) -}}
+                                {% endwith %}
                                 <span class="comment-spacer"></span>
                                 <span class="comment-operation">
                                 {% if node.revisions > 1 %}
