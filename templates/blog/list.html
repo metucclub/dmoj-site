@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+
 {% block title_row %}{% endblock %}
 {% block title_ruler %}{% endblock %}
 
@@ -103,7 +104,9 @@
                                     <span class="post-authors">{{ link_users(authors) }}</span>
                                 {%- endif -%}
                             {% endwith %}
-                            {{ relative_time(post.publish_on, abs=_('posted on {time}'), rel=_('posted {time}')) -}}
+                            {% with abs=_('posted on {time}'), rel=_('posted {time}') %}
+                                {{ relative_time(post.publish_on, abs, rel) -}}
+                            {% endwith %}
                         </span><span class="comment-data">
                             <a href="{{ url('blog_post', post.id, post.slug) }}#comments" class="comment-count-link">
                                 <i class="fa fa-comments comment-icon"></i><span class="comment-count">
@@ -159,7 +162,9 @@
                                     <a href="{{ url('contest_view', contest.key) }}">{{ contest.name }}</a>
                                 </div>
                                 <div class="time">
-                                    {{ _('Ends in %(countdown)s.', countdown=contest.time_before_end|as_countdown) }}
+                                    {%- trans countdown=contest.time_before_end|as_countdown -%}
+                                        Ends in {{ countdown }}
+                                    {%- endtrans %}
                                 </div>
                             </div>
                         {% endfor %}
@@ -177,7 +182,9 @@
                                     <a href="{{ url('contest_view', contest.key) }}">{{ contest.name }}</a>
                                 </div>
                                 <div class="time">
-                                    {{ _('Starting in %(countdown)s.', countdown=contest.time_before_start|as_countdown) }}
+                                    {%- trans countdown=contest.time_before_start|as_countdown -%}
+                                        Starting in {{ countdown }}
+                                    {%- endtrans %}
                                 </div>
                             </div>
                         {% endfor %}
