@@ -1,4 +1,4 @@
 {%- trans -%}
-Please activate your {{ SITE_NAME }} account
+{{ SITE_NAME }}: Activate your account
 {%- endtrans -%}
 
