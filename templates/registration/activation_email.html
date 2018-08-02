@@ -1,6 +1,8 @@
 {%- trans -%}
 Thanks for registering on {{ SITE_NAME }}! We're glad to have you.<br>
+<br>
 Please activate your account by clicking the link below.<br>
+<br>
 {%- endtrans %}
 <a href="{{ request.build_absolute_uri(url('registration_activate', activation_key)) }}">
 {{ request.build_absolute_uri(url('registration_activate', activation_key)) }}
