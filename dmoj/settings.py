@@ -136,7 +136,6 @@ INSTALLED_APPS += (
     'compressor',
     'django_ace',
     'pagedown',
-    'sortedm2m',
     'statici18n',
     'impersonate',
     'django_jinja',

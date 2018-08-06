@@ -5,13 +5,12 @@ from django import forms
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.auth.password_validation import get_default_password_validators
-from django.forms import CharField, ChoiceField, ModelChoiceField
+from django.forms import CharField, ChoiceField, ModelChoiceField, ModelMultipleChoiceField
 from django.shortcuts import render
 from django.utils.translation import ugettext, ugettext_lazy as _
 from registration.backends.default.views import (RegistrationView as OldRegistrationView,
                                                  ActivationView as OldActivationView)
 from registration.forms import RegistrationForm
-from sortedm2m.forms import SortedMultipleChoiceField
 
 from judge.models import Profile, Language, Organization, TIMEZONE
 from judge.utils.recaptcha import ReCaptchaWidget, ReCaptchaField
@@ -31,7 +30,7 @@ class CustomRegistrationForm(RegistrationForm):
                            widget=Select2Widget(attrs={'style': 'width:100%'}))
     language = ModelChoiceField(queryset=Language.objects.all(), label=_('Preferred language'), empty_label=None,
                                 widget=Select2Widget(attrs={'style': 'width:100%'}))
-    organizations = SortedMultipleChoiceField(queryset=Organization.objects.filter(is_open=True),
+    organizations = ModelMultipleChoiceField(queryset=Organization.objects.filter(is_open=True),
                                               label=_('Organizations'), required=False,
                                               widget=Select2MultipleWidget(attrs={'style': 'width:100%'}))
 

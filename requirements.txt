@@ -5,7 +5,6 @@ django-mptt>=0.8.4,<0.9
 django-registration-redux
 django-reversion
 django-social-share
-django-sortedm2m
 django-impersonate
 django_select2
 django-rosetta
