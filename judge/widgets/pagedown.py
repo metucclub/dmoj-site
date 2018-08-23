@@ -34,7 +34,6 @@ else:
         def _media(self):
             media = super(AdminPagedownWidget, self)._media()
             media.add_css({'all': [
-                'content-description.css',
                 'admin/css/pagedown.css',
             ]})
             media.add_js(['admin/js/pagedown.js'])
@@ -101,8 +100,6 @@ else:
             media = super(HeavyPreviewAdminPageDownWidget, self)._media()
             media.add_css({'all': [
                 'pygment-github.css',
-                'table.css',
-                'ranks.css',
             ]})
             return media
 
