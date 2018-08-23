@@ -48,7 +48,7 @@
         <link rel="stylesheet" href="{{ FONTAWESOME_CSS }}">
     {% endif %}
     {% compress css %}
-        <link rel="stylesheet" href="{{ static('style.css') }}">
+        <link rel="stylesheet" type="text/x-scss" href="{{ static('style.scss') }}">
         {% if PYGMENT_THEME %}
             <link rel="stylesheet" href="{{ static(PYGMENT_THEME) }}">
         {% endif %}{% if INLINE_FONTAWESOME %}
