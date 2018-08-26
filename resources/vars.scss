@@ -1,11 +1,18 @@
-$highlight_blue: #2980B9;
-$widget_black: #3b3b3b;
+$widget_bg: #eee;
+$widget_header: #1958c1;
+
 $border_gray: #ccc;
 $background_gray: #ededed;
 $background_light_gray: #fafafa;
 $announcement_red: #ae0000;
 
+$nav_link_color: #1958c1;
+$highlight_blue: #2980B9;
+$nav_link_active_color: #1958c1;
+$nav_link_hover_color: #1958c1;
+
 $base_font_size: 14px;
-$widget_border_radius: 4px;
+$widget_border_radius: 0px;
+$table_header_rounding: 0px;
 
 $monospace-fonts: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;

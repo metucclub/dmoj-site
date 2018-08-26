@@ -179,7 +179,7 @@ header {
     }
 
     a {
-        color: #FFF;
+        color: $nav_link_color;
     }
 
     li {
@@ -205,7 +205,7 @@ header {
             }
 
             & > span {
-                color: #eee;
+                color: $nav_link_color;
                 vertical-align: middle;
                 display: inline;
                 margin-top: 11px;
@@ -222,7 +222,7 @@ header {
 }
 
 #nav-container {
-    background: $widget_black;
+    background: $widget_bg;
 
     // opacity: 0.77
     // filter: alpha(opacity=77)
@@ -238,7 +238,6 @@ header {
 
 nav {
     position: relative;
-    position: -webkit-sticky;
     position: sticky;
     top: 0;
     width: 100%;
@@ -256,7 +255,7 @@ nav {
 
         li {
             display: inline-block;
-            color: #FFF;
+            color: $nav_link_color;
             text-transform: uppercase;
             position: relative;
 
@@ -275,22 +274,22 @@ nav {
                 display: inline-block;
                 text-decoration: none;
                 vertical-align: middle;
-                color: #FFF;
+                color: $nav_link_color;
                 padding: 13px 7px;
                 height: 18px;
 
                 &:link {
-                    color: #FFF;
+                    color: $nav_link_color;
                 }
 
                 &:hover {
-                    color: #FFF;
+                    color: $nav_link_active_color;
                     background: rgba(255, 255, 255, 0.25);
                     margin: 0;
                 }
 
                 &.active {
-                    color: #FFF;
+                    color: $nav_link_hover_color;
                     background: $highlight_blue;
                 }
 
@@ -305,14 +304,14 @@ nav {
                 left: 5px;
                 display: none;
                 color: #fff;
-                background: $widget_black;
+                background: $widget_bg;
                 margin: 0 !important;
                 box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 
                 li {
                     &:first-child {
                         a.active {
-                            border-top: 1px solid $widget_black;
+                            border-top: 1px solid $widget_bg;
                         }
                     }
                 }
@@ -594,7 +593,7 @@ math {
         border-left: 4px solid $highlight_blue;
         position: fixed;
         top: 36px;
-        background: $widget_black;
+        background: $widget_bg;
         bottom: 0;
         width: 8em;
         left: 0;

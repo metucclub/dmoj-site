@@ -28,7 +28,7 @@
 
 // Bootstrap-y buttons
 .button, button, input[type=submit] {
-    color: white !important;
+    color: white;
     text-decoration: none !important;
     cursor: pointer;
     vertical-align: middle;
@@ -279,7 +279,7 @@ ul.pagination {
                     line-height: 1.42857;
                     text-decoration: none;
                     color: #FFF;
-                    background-color: $widget_black;
+                    background-color: $widget_bg;
                     border: 1px solid #505050;
                     margin-left: -1px;
                 }
@@ -289,13 +289,13 @@ ul.pagination {
         .disabled-page > {
             a {
                 color: #888;
-                background-color: $widget_black;
+                background-color: $widget_bg;
                 border-color: #282828;
             }
 
             span {
                 color: #888;
-                background-color: $widget_black;
+                background-color: $widget_bg;
                 border-color: #505050;
             }
         }
@@ -415,9 +415,10 @@ ul.select2-selection__rendered {
 
 .sidebox h3 {
     margin: 0 -5px;
-    background: $widget_black;
+    background: $widget_bg;
     border-radius: $widget_border_radius $widget_border_radius 0 0;
-    color: white;
+    border: 1px solid $border_gray;
+    color: $widget_header;
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 7px;
@@ -425,7 +426,7 @@ ul.select2-selection__rendered {
 }
 
 .sidebox h3 .fa {
-    color: white;
+    color: $widget_header;
     float: right;
     margin: 0.2em 0.4em 0 0;
 }
