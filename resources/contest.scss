@@ -49,15 +49,16 @@
                 margin-bottom: 0.2em;
 
                 i.fa {
-                    color: orange;
+                    color: #eee;
                 }
 
                 a {
                     text-decoration: none;
-                    color: #222;
+                    color: #eee;
 
                     &:hover {
                         text-decoration: underline;
+		      color: #eee;
                     }
                 }
             }
@@ -103,11 +104,11 @@
         padding-bottom: 0.15em;
 
         &:link, &:visited {
-            color: #5B80B9;
+            color: #2b1f60;
         }
 
         &:hover {
-            color: #0645AD;
+            color: #604e8b;
         }
     }
 
@@ -185,17 +186,12 @@
 
 form.contest-join-pseudotab {
     display: inline;
-    padding: 6px 8px !important;
+    width: 13em;
     line-height: 1.7em;
     margin-left: 0.5em;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-
-    input {
-        display: inline;
-        border: none;
-        padding: 0;
-        background: none;
-        font-weight: 600;
-    }
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    font-weight: 600;
+    color: white;
+    
 }

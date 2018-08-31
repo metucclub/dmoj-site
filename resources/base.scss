@@ -18,21 +18,20 @@
 }
 
 a {
-    color: #1958c1;
+    color: #555;
 
     &:hover {
-        color: #0645ad;
+        color: $widget_bg;
     }
 
     &:active {
-        color: #faa700;
+        color: #604e8b;
     }
 }
 
 img {
     max-width: 100%;
-
-    // height: auto
+    max-height: 100%;
 }
 
 .full {
@@ -169,7 +168,7 @@ header {
     top: 0;
     right: 0;
     position: absolute;
-    color: #5c5954;
+    color: $nav_link_hover_color;
 
     .anon {
         position: absolute;
@@ -180,6 +179,15 @@ header {
 
     a {
         color: $nav_link_color;
+
+        &:hover {
+                color: $nav_link_hover_color;
+        }
+
+        &:active {
+                color: $nav_link_active_color;
+        }
+    
     }
 
     li {
@@ -218,7 +226,7 @@ header {
 
 #nav-shadow {
     height: 3px;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), transparent);
+    background: linear-gradient(rgba(0, 0, 0, 0.7), transparent);
 }
 
 #nav-container {
@@ -244,6 +252,11 @@ nav {
     margin: 0 auto;
     z-index: 500;
     text-align: left;
+
+    .logo-img {
+        margin: 4px;
+        max-height: calc(100% - 8px);
+    }
 
     ul {
         margin: 0 0 0 -5px !important;
@@ -353,13 +366,13 @@ nav {
     }
 
     .nav-divider {
-        width: 1px;
+        width: 0px;
         vertical-align: middle;
-        padding-left: 3px;
+        padding-left: 0px;
         display: inline-block;
-        height: 32px;
-        margin-right: 1px;
-        border-right: 3px solid rgba(255, 255, 255, 0.15);
+        height: 40px;
+        margin-right: 0px;
+        border-right: 0px solid rgba(255, 255, 255, 1);
     }
 }
 
@@ -428,7 +441,7 @@ noscript #noscript {
     padding: 5px 6px 6px 5px;
 
     a {
-        color: orange;
+        color: $widget-bg;
     }
 }
 
