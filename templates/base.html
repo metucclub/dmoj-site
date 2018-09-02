@@ -206,7 +206,7 @@
                         <img class="avatar-img" src="{{ gravatar(request.user, 32) }}">{# -#}
                         <div class="hello">
                             {%- trans username=request.user.username -%}
-                                Hello, <b>{{- username -}}</b>.
+                                Hello, <b>{{ username }}</b>.
                             {%- endtrans -%}
                         </div>
                     </a>
