@@ -171,7 +171,6 @@ header {
     color: $nav_link_hover_color;
     line-height: $nav_height;
     height: $nav_height;
-    vertical-align: middle;
     
     .avatar-img {
         float: left;
@@ -239,11 +238,6 @@ nav {
         height: 100%;
     }
 
-    .logo-img {
-        margin: $nav_logo_margin;
-        height: $nav_height - 2*$nav_logo_margin;
-    }
-
     #nav-list {
         margin: 0; padding: 0;
         text-align: left;
@@ -252,16 +246,28 @@ nav {
         list-style: none;
         background: transparent;
 
-        li {
+        * {
+            vertical-align: bottom;
             display: inline-block;
             line-height: $nav_height;
-            vertical-align: middle;
+        }    
+
+        .logo-img {
+            margin: $nav_logo_margin;
+            height: $nav_height - 2*$nav_logo_margin;
+        }
+        .logo-text {
+            margin-left: 4px;
+            font-weight: 700;
+        }
+
+        li {
             color: $nav_link_color;
             position: relative;
 
             &.home-nav-element a {
                 padding: 0;
-                height: 100%;
+                height: $nav_height;
 
                 &:hover {
                     border-bottom: none;
@@ -271,9 +277,7 @@ nav {
             }
 
             a, button {
-                display: inline-block;
                 text-decoration: none;
-                vertical-align: middle;
                 color: $nav_link_color;
                 padding: 0px $nav_gutter + $nav_logo_margin;
                 height: $nav_height;
@@ -284,8 +288,6 @@ nav {
 
                 &:hover {
                     color: $nav_link_active_color;
-                    background: rgba(255, 255, 255, 0.25);
-                    margin: 0;
                 }
 
                 &.active {
@@ -302,12 +304,10 @@ nav {
 
     .nav-divider {
         width: 0px;
-        vertical-align: middle;
-        padding-left: 0px;
-        display: inline-block;
-        height: 40px;
-        margin-right: 0px;
-        border-right: 0px solid rgba(255, 255, 255, 1);
+        height: $nav_height - 2*$nav_logo_margin;
+        margin: 0 4px;
+        border-right: 1px solid $nav_divider_color;
+        vertical-align: middle !important;
     }
 }
 
@@ -496,7 +496,6 @@ math {
     #navicon {
         display: inline-block;
         line-height: $nav_height - 2*$nav_logo_margin;
-        vertical-align: middle;
         font-size: 2em;
         color: #FFF;
         margin: $nav_logo_margin;
