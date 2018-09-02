@@ -37,7 +37,7 @@ class CustomRegistrationForm(RegistrationForm):
     if newsletter_id is not None:
         newsletter = forms.BooleanField(label=_('Subscribe to newsletter?'), initial=True, required=False)
 
-    if ReCaptchaField is not None:
+    if settings.USE_RECAPTCHA:
         captcha = ReCaptchaField(widget=ReCaptchaWidget())
 
     def clean_email(self):
