@@ -178,7 +178,8 @@
     </noscript>
 </head>
 <body>
-<nav id="navigation" class="unselectable">
+
+<nav id="navigation">
     <div id="nav-container">
         <a id="navicon" href="javascript:void(0)"><i class="fa fa-bars"></i></a>
         <ul id="nav-list">
@@ -199,50 +200,44 @@
                 </li>
             {% endfor %}
         </ul>
-
-        <span id="user-links">
+        <div id="user-links">
             {% if request.user.is_authenticated %}
-                <ul>
-                    <li>
-                        <a href="{{ url('user_page') }}">
-                            <span>
-                                <img src="{{ gravatar(request.user, 32) }}" height="24" width="24">{# -#}
-                                <span>
-                                    {%- trans username=request.user.username -%}
-                                        Hello, <b>{{ username }}</b>.
-                                    {%- endtrans %}
-                                </span>
-                            </span>
-                        </a>
-                        <ul style="width: 150px">
-                            {% if request.user.is_staff or request.user.is_superuser %}
-                                <li><a href="{{ url('admin:index') }}">{{ _('Admin') }}</a></li>
-                            {% endif %}
-                            <li><a href="{{ url('user_edit_profile') }}">{{ _('Edit profile') }}</a></li>
-                            {% if request.user.is_impersonate %}
-                                <li><a href="{{ url('impersonate-stop') }}">Stop impersonating</a></li>
-                            {% else %}
-                                <li>
-                                    <form action="{{ url('auth_logout') }}" method="POST">
-                                        {% csrf_token %}
-                                        <button type="submit">{{ _('Log out') }}</button>
-                                    </form>
-                                </li>
-                            {% endif %}
-                        </ul>
-                    </li>
+                    <a href="{{ url('user_page') }}">
+                        <img class="avatar-img" src="{{ gravatar(request.user, 32) }}">{# -#}
+                        <div class="hello">
+                            {%- trans username=request.user.username -%}
+                                Hello, <b>{{- username -}}</b>.
+                            {%- endtrans -%}
+                        </div>
+                    </a>
+                <ul class="user-drop">
+                    {% if request.user.is_staff or request.user.is_superuser %}
+                        <li><a href="{{ url('admin:index') }}">{{ _('Admin') }}</a></li>
+                    {% endif %}
+                        <li><a href="{{ url('user_edit_profile') }}">{{ _('Edit profile') }}</a></li>
+                    {% if request.user.is_impersonate %}
+                        <li><a href="{{ url('impersonate-stop') }}">Stop impersonating</a></li>
+                    {% else %}
+                        <li>
+                            <form action="{{ url('auth_logout') }}" method="POST" id="logout">
+                                {% csrf_token %}
+                                <a href="#" onclick="document.getElementById('logout').submit();">{{ _('Log out') }}</a>
+                            </form>
+                        </li>
+                    {% endif %}
                 </ul>
             {% else %}
                 <span class="anon">
-                    <a href="{{ url('auth_login') }}?next={{ LOGIN_RETURN_PATH|urlencode }}">
-                        <b>{{ _('Login') }}</b>
-                    </a>&nbsp;|&nbsp;<a href="{{ url('registration_register') }}">{{ _('Register') }}</a>
+                    <a href="{{ url('auth_login') }}?next={{ LOGIN_RETURN_PATH|urlencode }}"><b>{{ _('Login') }}</b></a>
+                    &nbsp;|&nbsp;
+                    <a href="{{ url('registration_register') }}">{{ _('Register') }}</a>
                 </span>
             {% endif %}
-        </span>
+        </div>
     </div>
-    <div id="nav-shadow"></div>
 </nav>
+
+
 {% if request.in_contest %}
     <div id="contest-info">
         <a href="{{ url('contest_view', request.participation.contest.key) }}" style="vertical-align: middle">
