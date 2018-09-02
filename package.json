@@ -1,0 +1,12 @@
+{
+	"name": "site",
+	"version": "1.0.0",
+	"description": "JS dependencies of the judge's web interface.",
+	"dependencies": {
+		"qu": "*",
+		"ws": "*",
+		"simplesets": "*",
+		"autoprefixer": "^9.1.2",
+		"postcss-cli": "^6.0.0"
+	}
+}
