@@ -17,6 +17,7 @@
 	"scripts": {
 		"sass": "node-sass --recursive --output static/ --source-map true --source-map-contents resources/",
 		"autoprefixer": "postcss --use autoprefixer --autoprefixer.browsers  '> 0.25%' --output static/style.css static/style.css",
-		"dev": "watch 'run-s sass autoprefixer' resources/"
+		"build:css": "run-s sass autoprefixer",
+		"dev": "watch 'build:css' resources/"
 	}
 }
