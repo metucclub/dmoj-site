@@ -1,8 +1,5 @@
 Django>=1.11,<2
 django_compressor
-django-compressor-postcss
-django-sass-processor
-libsass
 django-mptt>=0.8.4,<0.9
 -e git+https://github.com/DMOJ/django-pagedown.git#egg=django-pagedown
 django-registration-redux

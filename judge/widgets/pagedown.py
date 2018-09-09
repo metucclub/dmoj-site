@@ -6,8 +6,6 @@ from django.template.loader import get_template
 from django.utils.encoding import force_unicode
 from django.utils.html import conditional_escape
 
-from sass_processor.processor import sass_processor
-
 from judge.widgets.mixins import CompressorWidgetMixin
 
 __all__ = ['PagedownWidget', 'AdminPagedownWidget',
@@ -36,7 +34,7 @@ else:
         def _media(self):
             media = super(AdminPagedownWidget, self)._media()
             media.add_css({'all': [
-                sass_processor('content-description.scss'),
+                'content-description.css',
                 'admin/css/pagedown.css',
             ]})
             media.add_js(['admin/js/pagedown.js'])
@@ -103,8 +101,8 @@ else:
             media = super(HeavyPreviewAdminPageDownWidget, self)._media()
             media.add_css({'all': [
                 'pygment-github.css',
-                sass_processor('table.scss'),
-                sass_processor('ranks.scss'),
+                'table.css',
+                'ranks.css',
             ]})
             return media
 
