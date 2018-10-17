@@ -155,7 +155,7 @@ var url = require('url');
 require('http').createServer(function (req, res) {
     var parts = url.parse(req.url, true);
 
-    if (!parts.pathname.startsWith('/channels/')) {
+    if (!parts.pathname.startsWith('/' + config.prefix + '/channels/')) {
         res.writeHead(404, {'Content-Type': 'text/plain'});
         res.end('404 Not Found');
         return;

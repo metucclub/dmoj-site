@@ -224,7 +224,7 @@
                 </ul>
             {% else %}
                 <span class="anon">
-                    <a href="{{ url('auth_login') }}?next={{ LOGIN_RETURN_PATH|urlencode }}"><b>{{ _('Login') }}</b></a>
+                    <a href="{{ url('auth_login') }}"><b>{{ _('Login') }}</b></a>
                     &nbsp;|&nbsp;
                     <a href="{{ url('registration_register') }}">{{ _('Register') }}</a>
                 </span>

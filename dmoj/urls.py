@@ -5,6 +5,7 @@ from django.contrib.auth import views as auth_views
 from django.contrib.sitemaps.views import sitemap
 from django.core.urlresolvers import reverse
 from django.http import HttpResponsePermanentRedirect
+from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 from social_django.urls import urlpatterns as social_auth_patterns
 
@@ -48,10 +49,15 @@ register_patterns = [
         name='registration_disallowed'),
     url(r'^login/$', auth_views.LoginView.as_view(
         template_name='registration/login.html',
-        extra_context={'title': _('Login')},
+        extra_context={
+            'title': _('Login'),
+            'next': reverse_lazy("user_page")
+        },
         authentication_form=CustomAuthenticationForm,
     ), name='auth_login'),
-    url(r'^logout/$', auth_views.LogoutView.as_view(), name='auth_logout'),
+    url(r'^logout/$', auth_views.LogoutView.as_view(
+        next_page=reverse_lazy("home")
+    ), name='auth_logout'),
     url(r'^password/change/$', auth_views.PasswordChangeView.as_view(
         template_name='registration/password_change_form.html'
     ), name='password_change'),

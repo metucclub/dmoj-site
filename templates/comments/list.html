@@ -38,7 +38,7 @@
                             <div class="header">
                                 {{ link_user(node.author) }}&nbsp;
                                 {% with abs=_('commented on {time}'), rel=_('commented {time}') %}
-                                    {{ relative_time(post.publish_on, abs, rel) -}}
+                                    {{ relative_time(node.time, abs, rel) -}}
                                 {% endwith %}
                                 <span class="comment-spacer"></span>
                                 <span class="comment-operation">
