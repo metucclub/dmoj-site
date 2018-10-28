@@ -136,6 +136,7 @@ MIDDLEWARE = (
 	'django.middleware.common.CommonMiddleware',
 	'django.middleware.csrf.CsrfViewMiddleware',
 	'django.contrib.auth.middleware.AuthenticationMiddleware',
+	'judge.middleware.DMOJLoginMiddleware',
 	'django.contrib.messages.middleware.MessageMiddleware',
 	'django.middleware.clickjacking.XFrameOptionsMiddleware',
 	'judge.user_log.LogUserAccessMiddleware',
@@ -160,7 +161,7 @@ AUTH_PASSWORD_VALIDATORS = [
 		'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
 	},
 	{
-		'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+		'NAME': 'judge.utils.pwned.PwnedPasswordsValidator',
 	},
 	{
 		'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
