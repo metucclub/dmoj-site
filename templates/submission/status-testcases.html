@@ -71,21 +71,6 @@
                     <td>({{ case.points|floatformat(0) }}/{{ case.total|floatformat(0) }})</td>
                 {% endif %}
             </tr>
-
-            {% if case.status != 'AC' and case.output %}
-                <tr id="{{ case.id }}-output" style="display:none" class="toggled">
-                    <td colspan="5">
-                        <div class="case-info">
-                            <strong>{{ _('Your output (clipped)') }}</strong>
-                            {% if prefix_length == None %}
-                                <pre class="case-output">{{ case.output|linebreaksbr }}</pre>
-                            {% else %}
-                                <pre class="case-output">{{ case.output[:prefix_length]|linebreaksbr }}</pre>
-                            {% endif %}
-                        </div>
-                    </td>
-                </tr>
-            {% endif %}
         {% endfor %}
         </table>
 

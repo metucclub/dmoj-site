@@ -50,15 +50,6 @@
                     <i class="fa fa-eye-slash"></i> {{ _('private') }}
                 </span>
             {% endif %}
-            {% if contest.is_private %}
-                {% for org in contest.organizations.all() %}
-                    <span style="background-color: #cccccc" class="contest-tag">
-                        <a href="{{ org.get_absolute_url() }}" style="color: #000000">
-                            <i class="fa fa-lock"></i> {{ org.name }}
-                        </a>
-                    </span>
-                {% endfor %}
-            {% endif %}
             {% for tag in contest.tags.all() %}
                 <span style="background-color: {{ tag.color }}" class="contest-tag">
                     <a href="{{ url('contest_tag', tag.name) }}"

@@ -202,13 +202,11 @@ class UserPerformancePointsAjax(UserProblemsPage):
 @login_required
 def edit_profile(request):
     profile = Profile.objects.get(user=request.user)
-    has_math_config = bool(getattr(settings, 'MATHOID_URL', False))
 
     if profile.mute:
         raise Http404()
     if request.method == 'POST':
         form = ProfileForm(request.POST, instance=profile, user=request.user)
-        form.fields['math_engine'].required = has_math_config
         if form.is_valid():
             with transaction.atomic(), revisions.create_revision():
                 form.save()
@@ -246,7 +244,6 @@ def edit_profile(request):
     tzmap = getattr(settings, 'TIMEZONE_MAP', None)
     return render(request, 'user/edit-profile.html', {
         'form': form, 'title': _('Edit profile'), 'profile': profile,
-        'has_math_config': has_math_config,
         'TIMEZONE_MAP': tzmap or 'http://momentjs.com/static/img/world.png',
         'TIMEZONE_BG': getattr(settings, 'TIMEZONE_BG', None if tzmap else '#4E7CAD'),
     })

@@ -97,23 +97,6 @@
                 x_pos = 0, y_pos = 0,
                 x_elem = 0, y_elem = 0;
 
-            $('#contest-info').mousedown(function () {
-                selected = $(this);
-                x_elem = x_pos - selected.offset().left;
-                y_elem = y_pos - (selected.offset().top - $(window).scrollTop());
-                return false;
-            });
-
-            if (localStorage.getItem("contest_timer_pos")) {
-                data = localStorage.getItem("contest_timer_pos").split(":");
-                $("#contest-info").css({
-                    left: data[0],
-                    top: data[1]
-                });
-            }
-
-            $("#contest-info").show();
-
             $(document).mousemove(function (e) {
                 x_pos = e.screenX;
                 y_pos = e.screenY;
@@ -233,23 +216,6 @@
     </div>
 </nav>
 
-
-{% if request.in_contest %}
-    <div id="contest-info">
-        <a href="{{ url('contest_view', request.participation.contest.key) }}" style="vertical-align: middle">
-            {{ request.participation.contest.name }} -
-            {% if request.participation.spectate %}
-                {{ _('spectating') }}
-            {% elif request.participation.end_time %}
-                <div id="contest-time-remaining" data-secs="{{ request.participation.time_remaining|seconds }}">
-                    {{ request.participation.time_remaining|timedelta("localized") }}
-                </div>
-            {% else %}
-                {{ _('virtual') }}
-            {% endif %}
-        </a>
-    </div>
-{% endif %}
 <div id="page-container">
     <noscript>
         <div id="noscript">{{ _('This site works best with JavaScript enabled.') }}</div>

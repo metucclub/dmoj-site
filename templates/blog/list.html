@@ -107,13 +107,6 @@
                             {% with abs=_('posted on {time}'), rel=_('posted {time}') %}
                                 {{ relative_time(post.publish_on, abs, rel) -}}
                             {% endwith %}
-                        </span><span class="comment-data">
-                            <a href="{{ url('blog_post', post.id, post.slug) }}#comments" class="comment-count-link">
-                                <i class="fa fa-comments comment-icon"></i><span class="comment-count">
-                                    {{- post_comment_counts[post.id] or 0 -}}
-                                </span>
-                            </a>
-                        </span>
                         <div class="summary content-description">
                             {% cache 86400 'post_summary' post.id %}
                                 {{ post.summary|default(post.content, true)|markdown('blog', 'svg', lazy_load=True)|reference|str|safe }}
@@ -192,45 +185,17 @@
                 </div>
             {% endif %}
 
-            {% if perms.judge.test_site and own_open_tickets %}
+            {% if past_contests %}
                 <div class="blog-sidebox sidebox">
-                    <h3>{{ _('My open tickets') }} <i class="fa fa-question-circle"></i></h3>
+                    <h3>{{ _('Past contests') }} <i class="fa fa-trophy"></i></h3>
                     <div class="sidebox-content">
-                        <ul class="own-open-tickets">
-                            {% for ticket in own_open_tickets %}
-                                <li>
-                                    <div class="title">
-                                        <a href="{{ url('ticket', ticket.id) }}">{{ ticket.title }}</a>
-                                    </div>
-                                    <div class="object">
-                                        <a href="{{ ticket.linked_item.get_absolute_url() }}">
-                                            {{ ticket.linked_item|item_title }}</a>
-                                    </div>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-            {% endif %}
-
-            {% if perms.judge.test_site and open_tickets %}
-                <div class="blog-sidebox sidebox">
-                    <h3>{{ _('New tickets') }} <i class="fa fa-exclamation-circle"></i></h3>
-                    <div class="sidebox-content">
-                        <ul class="open-tickets">
-                            {% for ticket in open_tickets %}
-                                <li>
-                                    <div class="title">
-                                        <a href="{{ url('ticket', ticket.id) }}">{{ ticket.title }}</a>
-                                    </div>
-                                    <div class="object">
-                                        <a href="{{ ticket.linked_item.get_absolute_url() }}">
-                                            {{ ticket.linked_item|item_title }}</a>
-                                    </div>
-                                    <div>{{ link_user(ticket.user) }}</div>
-                                </li>
-                            {% endfor %}
-                        </ul>
+                        {% for contest in past_contests %}
+                            <div class="contest">
+                                <div class="contest-list-title">
+                                    <a href="{{ url('contest_view', contest.key) }}">{{ contest.name }}</a>
+                                </div>
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
             {% endif %}

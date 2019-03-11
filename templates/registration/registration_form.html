@@ -80,7 +80,6 @@
             border: unset;
             background: unset;
             max-width: 450px;
-            width: 450px;
         }
 
         #content-body {
@@ -91,7 +90,6 @@
             display: inline-block;
             text-align: initial;
             max-width: 450px;
-            width: 450px;
         }
 
         ul.errorlist {
@@ -178,9 +176,6 @@
 
             <div class="block-header">{{ _('Default language') }}</div>
             <span class="fullwidth">{{ form.language }}</span>
-
-            <div class="block-header">{{ _('Affiliated organizations') }}</div>
-            {{ form.organizations }}
 
             {% if form.newsletter %}
                 <div style="padding-top: 0.5em;">{{ form.newsletter }}

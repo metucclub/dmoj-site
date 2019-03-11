@@ -216,10 +216,6 @@
             }).on('change', function () {
                 window.location.href = url.replace('__username__', $(this).val());
             });
-
-            $('#show-organizations-checkbox').click(function () {
-                $('.organization-column').toggle();
-            });
         });
     </script>
     {% include "contest/media-js.html" %}
@@ -232,8 +228,6 @@
                 <input id="search-contest" type="text" placeholder="{{ _('View user participation') }}">
             {% endif %}
         {% endif %}
-        <input id="show-organizations-checkbox" type="checkbox" style="vertical-align: bottom">
-        <label for="show-organizations-checkbox" style="vertical-align: bottom">{{ _('Show organizations') }}</label>
     </div>
     {% include "contest/ranking-table.html" %}
 {% endblock %}
