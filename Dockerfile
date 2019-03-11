@@ -25,10 +25,10 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install cffi && \
     pip install -r requirements.txt && \
-    pip install mysqlclient && \
     pip install django_select2 && \
     pip install websocket-client && \
-    pip install gunicorn
+    pip install gunicorn && \
+    pip install gunicorn[gevent]
 
 COPY package.json .
 RUN npm install .

@@ -59,20 +59,20 @@
                 count_down($(this));
             });
 
-            $('.blog-sidebar').hide();
+            // $('.blog-sidebar').hide();
             $('#blog-tab').find('a').click(function (e) {
                 e.preventDefault();
                 $('#blog-tab').addClass('active');
                 $('#event-tab').removeClass('active');
                 $('.blog-content').show();
-                $('.blog-sidebar').hide();
+                // $('.blog-sidebar').hide();
             });
             $('#event-tab').find('a').click(function (e) {
                 e.preventDefault();
                 $('#event-tab').addClass('active');
                 $('#blog-tab').removeClass('active');
                 $('.blog-content').hide();
-                $('.blog-sidebar').show();
+                // $('.blog-sidebar').show();
             });
         });
     </script>
