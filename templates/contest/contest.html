@@ -80,7 +80,6 @@
         {% endcache %}
     </div>
 
-    {% if contest.ended or request.user.is_superuser or is_organizer %}
         <hr>
         <div class="contest-problems">
             <h2 style="margin-bottom: 0.2em"><i class="fa fa-fw fa-question-circle"></i>{{ _('Problems') }} </h2>
@@ -123,7 +122,6 @@
                 </tbody>
             </table>
         </div>
-    {% endif %}
 
     <hr>
     <span class="social">
