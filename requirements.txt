@@ -6,7 +6,7 @@ django-registration-redux
 django-reversion
 django-social-share
 django-impersonate
-django_select2
+django_select2<7
 django-rosetta
 django-recaptcha2
 django-anymail

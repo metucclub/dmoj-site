@@ -14,11 +14,7 @@
         <h3>{{ _('Compilation Error') }}</h3>
         <pre>{{ submission.error|safe }}</pre>
     {% else %}
-        {% if submission.error %}
-            <h3>{{ _('Compilation Warnings') }}</h3>
-            <pre>{{ submission.error|safe }}</pre>
-            <hr class="half-hr"><br>
-        {% endif %}
+
         {% if is_pretest %}
             <h3>{{ _('Pretest Execution Results') }}</h3>
         {% else %}

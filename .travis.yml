@@ -1,0 +1,45 @@
+sudo: required
+dist: xenial
+language: bash
+services:
+  - docker
+
+env:
+  global:
+    - DOCKER_CLI_EXPERIMENTAL=enabled
+    - BASE_IMAGE_NAME=python:2-alpine
+
+before_install:
+  - sudo apt-get update
+  - sudo apt-get -y install qemu-user-static qemu-user binfmt-support
+
+install:
+  - echo '{"experimental":true}' | sudo tee /etc/docker/daemon.json
+  - sudo service docker restart
+
+before_script:
+  - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
+  - git clone https://github.com/oznakn/docker-scripts
+  - mv docker-scripts/*.sh .
+  - rm -rf docker-scripts
+
+script:
+  - docker pull --platform amd64 "${BASE_IMAGE_NAME}"
+  - docker build -t "${IMAGE_NAME}:amd64" .
+  - docker rmi "${BASE_IMAGE_NAME}"
+  - docker pull --platform arm "${BASE_IMAGE_NAME}"
+  - cp /usr/bin/qemu-arm-static .
+  - sed -i '2 i\COPY qemu-arm-static /usr/bin' Dockerfile
+  - docker build -t "${IMAGE_NAME}:arm32-v7" .
+  - docker rmi "${BASE_IMAGE_NAME}"
+
+after_success:
+  - docker push "${IMAGE_NAME}:amd64"
+  - docker push "${IMAGE_NAME}:arm32-v7"
+  - docker manifest create "${IMAGE_NAME}" "${IMAGE_NAME}:amd64" "${IMAGE_NAME}:arm32-v7"
+  - docker manifest annotate "${IMAGE_NAME}" "${IMAGE_NAME}:arm32-v7" --os linux --arch arm --variant v7
+  - docker manifest push --purge "${IMAGE_NAME}"
+
+branches:
+  only:
+    - master

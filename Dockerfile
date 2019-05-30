@@ -17,6 +17,8 @@ RUN apk add --upgrade  \
     npm \
     libsass \
     git \
+    zip \
+    unzip \
     bash
 
 RUN mkdir -p /app
